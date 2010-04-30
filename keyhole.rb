@@ -2,7 +2,7 @@ require 'rubygems'
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'lib/keyhole'
 
-raise "KEYHOLE_USER and KEYHOLE_SECRET must be defined"
+raise "KEYHOLE_USER and KEYHOLE_SECRET must be defined" unless ENV['KEYHOLE_USER'] and ENV['KEYHOLE_SECRET']
 
 use Rack::Auth::Basic do |username, password|
   username == ENV['KEYHOLE_USER'] and password == ENV['KEYHOLE_SECRET']
